@@ -17,4 +17,5 @@ Steps taken to create the Project:
  - Add Item to Data Structure
  - Add Item to the UI
  - Add Total Calories
- - Update Items, working with Edit State
+ - Update Items, working with Edit State, Total Calories
+ - Delete and Clear Items
