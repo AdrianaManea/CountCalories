@@ -1,3 +1,5 @@
+CalorieCounter application with Vanilla JavaScript
+
 Materialize
 https://materializecss.com/getting-started.html
 
@@ -19,3 +21,5 @@ Steps taken to create the Project:
  - Add Total Calories
  - Update Items, working with Edit State, Total Calories
  - Delete and Clear Items
+ - Add and Get from Local Storage
+ - Delete and Clear from Local Storage

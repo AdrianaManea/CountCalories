@@ -13,7 +13,7 @@ const UICtrl = (function () {
     itemNameInput: '#item-name',
     itemCaloriesInput: '#item-calories',
     totalCalories: '.total-calories',
-  }
+  };
 
   // Public Methods
   return {

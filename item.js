@@ -6,36 +6,36 @@ const ItemCtrl = (function () {
 
   // Item Constructor
   const Item = function (id, name, calories) {
-    // Each time we add an item and calories it's going to have an id
     this.id = id;
     this.name = name;
     this.calories = calories;
-  }
+  };
 
 
   // Data Structure / State
   const data = {
-    items: [
-      // {
-      //   id: 0,
-      //   name: 'Oxtail Noodle Soup',
-      //   calories: 470
-      // },
-      // {
-      //   id: 1,
-      //   name: 'White Wine',
-      //   calories: 100
-      // },
-      // {
-      //   id: 2,
-      //   name: 'Ginger Ice Cream',
-      //   calories: 230
-      // },
-    ],
+    // items: [
+    //   {
+    //     id: 0,
+    //     name: 'Oxtail Noodle Soup',
+    //     calories: 470
+    //   },
+    //   {
+    //     id: 1,
+    //     name: 'White Wine',
+    //     calories: 100
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'Ginger Ice Cream',
+    //     calories: 230
+    //   },
+    // ],
+    items: StorageCtrl.getItemsFromStorage(),
     // when click update icon, that particular item to be the currentItem. And then that item is going to be put up in the form to be updated = currentItem
     currentItem: null,
     totalCalories: 0
-  }
+  };
 
 
   // Public Methods
@@ -70,7 +70,7 @@ const ItemCtrl = (function () {
       data.items.forEach(function (item) {
         if (item.id === id) {
           found = item;
-        }
+        };
       });
       return found;
     },
@@ -85,7 +85,7 @@ const ItemCtrl = (function () {
           item.name = name;
           item.calories = calories;
           found = item;
-        }
+        };
       });
       return found;
     },

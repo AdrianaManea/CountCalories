@@ -1,6 +1,6 @@
 // App Controller
 
-const AppCtrl = (function (ItemCtrl, UICtrl) {
+const AppCtrl = (function (ItemCtrl, StorageCtrl, UICtrl) {
 
   // Load Event Listeners 
   const loadEventListeners = function () {
@@ -32,8 +32,7 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
 
     // Clear Items Event
     document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllItemsClick);
-
-  }
+  };
 
 
   // Add Item Submit
@@ -54,11 +53,14 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
     // Add Total Calories to UI
     UICtrl.showTotalCalories(totalCalories);
 
+    // Store in Local Storage
+    StorageCtrl.storeItem(newItem);
+
     // Clear Input Fields
     UICtrl.clearInput();
 
     e.preventDefault();
-  }
+  };
 
 
   // Edit Item Click
@@ -84,7 +86,7 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
     }
 
     e.preventDefault();
-  }
+  };
 
 
   // Update Item Submit
@@ -103,10 +105,13 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
     // Add Total Calories to UI
     UICtrl.showTotalCalories(totalCalories);
 
+    // Update LS
+    StorageCtrl.updateItemStorage(updatedItem);
+
     UICtrl.clearEditState();
 
     e.preventDefault();
-  }
+  };
 
 
   // Delete Button Event
@@ -125,11 +130,16 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
     // Add Total Calories to UI
     UICtrl.showTotalCalories(totalCalories);
 
+    // Delete from LS
+    StorageCtrl.deleteItemFromStorage(currentItem.id);
+
     UICtrl.clearEditState();
+
+    // Hide UL
+    // UICtrl.hideList();
 
     e.preventDefault();
   };
-
 
 
   // Clear All Items Event
@@ -145,10 +155,12 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
     // Remove from UI
     UICtrl.removeItems();
 
+    // Clear from LS
+    StorageCtrl.clearItemsFromStorage();
+
     // Hide UL
     UICtrl.hideList();
-
-  }
+  };
 
 
   // Public Methods
@@ -175,11 +187,9 @@ const AppCtrl = (function (ItemCtrl, UICtrl) {
 
       // Load Event Listeners
       loadEventListeners();
-
     }
   }
-
-})(ItemCtrl, UICtrl);
+})(ItemCtrl, StorageCtrl, UICtrl);
 
 
 // Initialize AppCtrl
